@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Un petit cadeau pour ma moitié</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    video.background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    #container {
+      max-width: 800px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Vidéo en arrière-plan -->
+  <video class="background-video" autoplay loop muted playsinline>
+    <source src="https://files.catbox.moe/n1javi.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la vidéo HTML5.
+  </video>
+
+  <!-- Audio automatique -->
+  <audio id="background-audio" loop>
+    <source src="https://files.catbox.moe/ur4us6.mp3" type="audio/mpeg">
+    Votre navigateur ne supporte pas l’audio HTML5.
+  </audio>
+
+  <div id="container"></div>
+
+  <script>
+    const slides = [
+      {
+        type: 'image', src: 'https://files.catbox.moe/2pevx0.jpg',
+        description: "Mon cœur, ces étoiles représentent la voie lactée visible dans ton regard, celui-là qui est si scintillant et s'illumine au reflet de la lune."
+      },
+      {
+        type: 'image', src: 'https://files.catbox.moe/vvfqv7.jpg',
+        description: "Le symbole astrologique du Sagittaire : telle ta constellation, tu incarnes la force intérieure pleine de dévouement."
+      },
+      {
+        type: 'image', src: 'https://files.catbox.moe/id2df3.jpg',
+        description: "Un cœur qui représente l'amour que tu donnes à ton prochain, grâce à ta bonté intérieure."
+      },
+      {
+        type: 'image', src: 'https://files.catbox.moe/1hhfi6.jpg',
+        description: "Une fleur aussi belle que toi, douce et jolie au milieu des épines du monde."
+      },
+      {
+        type: 'image', src: 'https://files.catbox.moe/ksnc1r.jpg',
+        description: "D'autres fleurs qui incarnent ton parfum, emporté par une brise de vent envoûtante."
+      },
+      {
+        type: 'image', src: 'https://files.catbox.moe/akiuer.jpg',
+        description: "Un livre, symbole de sagesse et d’intelligence. Tu es promise à un avenir brillant."
+      },
+      {
+        type: 'image', src: 'https://files.catbox.moe/o6kn0u.jpg',
+        description: "Une plume pour ton élégance naturelle. Tu incarnes la distinction."
+      },
+      {
+        type: 'image', src: 'https://files.catbox.moe/fxz6qb.jpg',
+        description: "Un ballon pour ta joie de vivre et ta capacité à illuminer la vie des autres."
+      },
+      {
+        type: 'image', src: 'https://files.catbox.moe/zwpgis.jpg',
+        description: "Des oiseaux pour ta liberté d’esprit, noble et légère comme un cygne."
+      },
+      {
+        type: 'image', src: 'https://files.catbox.moe/rjx7lw.jpg',
+        description: "La passion d’un cœur, brûlante et intense comme un feu sacré."
+      },
+      {
+        type: 'image', src: 'https://files.catbox.moe/mxwubw.jpg',
+        description: "Alix, pure comme l’eau cristalline, douce et gracieuse."
+      },
+      {
+        type: 'image', src: 'https://files.catbox.moe/1q00cf.jpg',
+        description: "Alix, rare comme un flamant rose blanc. Unique en ton genre."
+      },
+      {
+        type: 'image', src: 'https://files.catbox.moe/d820fi.jpg',
+        description: "Une cabane feuilletée, parce que tu renfermes de nombreux secrets... mais j'aimerais que tu me les confies un jour."
+      },
+      {
+        type: 'image', src: 'https://files.catbox.moe/algz4m.jpg',
+        description: "Du chocolat, mon cœur… Ici, pas de mots. Je te laisse ressentir."
+      }
+    ];
+
+    const container = document.getElementById('container');
+    let current = 0;
+
+    function showSlide(index) {
+      const slide = slides[index];
+      container.innerHTML = '';
+
+      const fadeDiv = document.createElement('div');
+      fadeDiv.style.animation = "fadeIn 1s ease-in-out";
+
+      if (slide.type === 'image') {
+        const img = document.createElement('img');
+        img.src = slide.src;
+        const desc = document.createElement('p');
+        desc.textContent = slide.description;
+        fadeDiv.appendChild(img);
+        fadeDiv.appendChild(desc);
+      }
+
+      container.appendChild(fadeDiv);
+    }
+
+    function nextSlide() {
+      if (current < slides.length) {
+        showSlide(current);
+        current++;
+        setTimeout(nextSlide, 13000); // Change toutes les 13 secondes
+      }
+    }
+
+    nextSlide();
+
+    // Activation manuelle du son (autoplay bloqué souvent)
+    window.addEventListener('click', () => {
+      const audio = document.getElementById('background-audio');
+      audio.play();
+    });
+  </script>
+</body>
+</html>
