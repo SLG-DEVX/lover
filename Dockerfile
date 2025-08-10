@@ -1,8 +1,8 @@
 FROM node:lts-buster
 
-RUN git clone https://github.com/Ainz-devs/OVL-MD-V2-SESSION-ID-GEN /root/OVL-MD-V2-SESSION-ID-GEN
+RUN git clone https://github.com/SLG-DEVX/lover /root/lover
 
-WORKDIR /root/OVL-MD-V2-SESSION-ID-GEN
+WORKDIR /root/lover
 
 COPY package.json .
 RUN npm i
