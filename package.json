@@ -1,1 +1,15 @@
-....
+{
+  "name": "Alixou",
+  "version": "1.0.0",
+  "description": "pour vos meufs",
+  "main": "Ovl.js",
+  "scripts": {
+    "start": "pm2 start Ovl.js --attach --name index.js",
+    "stop": "pm2 stop all",
+  },
+  "keywords": ["love"],
+  "author": "Ruben",
+  "dependencies"
+    "express": "^5.1.0"
+  }
+}
