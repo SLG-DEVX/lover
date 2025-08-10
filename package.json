@@ -2,7 +2,7 @@
   "name": "Alixou",
   "version": "1.0.0",
   "description": "pour vos meufs",
-  "main": "Ovl.js",
+  "main": "index.js",
   "scripts": {
     "start": "pm2 start Ovl.js --attach --name index.js",
     "stop": "pm2 stop all",
